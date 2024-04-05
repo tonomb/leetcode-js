@@ -15,8 +15,6 @@
 // arr = [5,1,4,2,3]
 
 function maxMin(arr) {
-  // Replace this placeholder return statement with your code
-
   const sortedArray = [];
   let count = 0;
 
@@ -34,6 +32,6 @@ function maxMin(arr) {
   return sortedArray;
 }
 
-// Time COmplexity O(n) - iterates once though the array
+// Time complexity O(n) - iterates once though the array
 
 export { maxMin };
