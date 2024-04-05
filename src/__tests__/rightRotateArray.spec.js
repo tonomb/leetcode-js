@@ -1,4 +1,4 @@
-import { rightRotate, rightRotateSplice } from "./rightRotateArray";
+import { rightRotate, rightRotateSplice } from "../rightRotateArray";
 
 describe("Right Rotate Array ", () => {
   it("should equal output 0", () => {

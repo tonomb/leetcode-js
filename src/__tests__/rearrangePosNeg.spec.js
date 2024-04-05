@@ -1,6 +1,4 @@
-import { reArrange } from "./rearrangePosNeg";
-
-//Note: The order of the numbers is not important as long as all negative numbers are contiguous to the left and positive ones on the right.
+import { reArrange } from "../rearrangePosNeg";
 
 describe("Rearrange Positives and Negatives", () => {
   it("Should return output 0", () => {
