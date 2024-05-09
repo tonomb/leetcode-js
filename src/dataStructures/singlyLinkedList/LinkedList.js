@@ -30,4 +30,25 @@ export class LinkedList {
     this.head = tempNode;
     return this;
   }
+
+  insertAtTail(newData) {
+    let tempNode = new Node(newData);
+
+    if (this.isEmpty()) {
+      let temp = this.head;
+      this.head = tempNode;
+      tempNode.nextElement = temp;
+    } else {
+      let temp = this.head;
+
+      while (temp.nextElement != null) {
+        temp = temp.nextElement;
+      }
+
+      temp.nextElement = tempNode;
+      tempNode.nextElement = null;
+    }
+
+    return this;
+  }
 }
