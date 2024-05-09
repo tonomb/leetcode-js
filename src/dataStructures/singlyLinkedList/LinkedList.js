@@ -1,3 +1,4 @@
+import { Node } from "./Node.js";
 export class LinkedList {
   constructor() {
     this.head = null;
@@ -5,5 +6,28 @@ export class LinkedList {
 
   isEmpty() {
     return this.head == null;
+  }
+
+  printList() {
+    if (this.isEmpty()) {
+      console.log("Empty List");
+      return false;
+    } else {
+      let temp = this.head;
+      while (temp != null) {
+        process.stdout.write(String(temp.data));
+        process.stdout.write(" -> ");
+        temp = temp.nextElement;
+      }
+      console.log("null");
+      return true;
+    }
+  }
+
+  insertAtHead(newData) {
+    let tempNode = new Node(newData);
+    tempNode.nextElement = this.head;
+    this.head = tempNode;
+    return this;
   }
 }
