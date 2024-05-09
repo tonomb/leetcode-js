@@ -35,7 +35,7 @@ export class LinkedList {
     let newNode = new Node(newData);
 
     if (this.isEmpty()) {
-      this.head = tempNode;
+      this.head = newNode;
       return this;
     }
 
