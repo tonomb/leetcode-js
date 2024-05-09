@@ -32,22 +32,20 @@ export class LinkedList {
   }
 
   insertAtTail(newData) {
-    let tempNode = new Node(newData);
+    let newNode = new Node(newData);
 
     if (this.isEmpty()) {
-      let temp = this.head;
       this.head = tempNode;
-      tempNode.nextElement = temp;
-    } else {
-      let temp = this.head;
-
-      while (temp.nextElement != null) {
-        temp = temp.nextElement;
-      }
-
-      temp.nextElement = tempNode;
-      tempNode.nextElement = null;
+      return this;
     }
+
+    let currentNode = this.head;
+
+    while (currentNode.nextElement != null) {
+      currentNode = currentNode.nextElement;
+    }
+
+    currentNode.nextElement = newNode;
 
     return this;
   }
