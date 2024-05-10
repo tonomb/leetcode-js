@@ -49,4 +49,6 @@ export class LinkedList {
 
     return this;
   }
+
+  // TODO insertAtNth()
 }
