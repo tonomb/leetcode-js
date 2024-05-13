@@ -79,4 +79,31 @@ export class LinkedList {
 
     return this;
   }
+
+  deleteByValue(value) {
+    if (this.isEmpty()) {
+      return false;
+    }
+
+    let currentNode = this.head;
+
+    if (currentNode.data === value) {
+      this.head = currentNode.nextElement;
+      return true;
+    }
+
+    let previousNext = this.head;
+
+    while (currentNode.nextElement != null) {
+      if (currentNode.data === value) {
+        previousNext = currentNode.nextElement;
+        return true;
+      }
+
+      previousNext = currentNode;
+      currentNode = currentNode.nextElement;
+    }
+
+    return false;
+  }
 }
