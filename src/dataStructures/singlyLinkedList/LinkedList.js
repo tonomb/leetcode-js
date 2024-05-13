@@ -61,10 +61,22 @@ export class LinkedList {
       if (currentNode.data === value) {
         return true;
       }
-
       currentNode = currentNode.nextElement;
     }
-
     return false;
+  }
+
+  deleteAtHead() {
+    if (this.isEmpty()) {
+      return this;
+    }
+
+    let firstElement = this.head;
+
+    let temp = firstElement.nextElement;
+
+    this.head = temp;
+
+    return this;
   }
 }
