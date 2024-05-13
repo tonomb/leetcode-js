@@ -50,5 +50,21 @@ export class LinkedList {
     return this;
   }
 
-  // TODO insertAtNth()
+  search(value) {
+    if (this.isEmpty()) {
+      return false;
+    }
+
+    let currentNode = this.head;
+
+    while (currentNode.nextElement != null) {
+      if (currentNode.data === value) {
+        return true;
+      }
+
+      currentNode = currentNode.nextElement;
+    }
+
+    return false;
+  }
 }

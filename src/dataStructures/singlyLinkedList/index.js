@@ -9,8 +9,11 @@ let list = new LinkedList();
 
 // list.printList();
 
-for (var i = 0; i < 4; i++) {
+for (var i = 0; i < 10; i++) {
   list = list.insertAtTail(i);
 }
+
+console.log(list.search(10));
+console.log(list.search(3));
 
 list.printList();
