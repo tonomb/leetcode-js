@@ -106,4 +106,25 @@ export class LinkedList {
 
     return false;
   }
+
+  deleteAtTail() {
+    if (this.isEmpty()) {
+      return this;
+    }
+
+    let currentNode = this.head;
+
+    if (currentNode.nextElement == null) {
+      this.head = null;
+      return this;
+    }
+
+    while (currentNode.nextElement.nextElement != null) {
+      currentNode = currentNode.nextElement;
+    }
+
+    currentNode.nextElement = null;
+
+    return this;
+  }
 }

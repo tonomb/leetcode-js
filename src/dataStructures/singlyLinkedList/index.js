@@ -14,6 +14,6 @@ for (var i = 0; i < 10; i++) {
 }
 
 list.printList();
-list.deleteAtHead();
-list.deleteAtHead();
+// list.deleteAtHead();
+list.deleteAtTail();
 list.printList();
