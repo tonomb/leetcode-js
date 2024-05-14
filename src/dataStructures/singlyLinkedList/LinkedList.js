@@ -142,4 +142,27 @@ export class LinkedList {
 
     return length;
   }
+
+  reverseList() {
+    if (this.isEmpty()) {
+      return this;
+    }
+
+    let currentNode = this.head;
+    let previousNode = null;
+    let nextNode = null;
+
+    while (currentNode != null) {
+      nextNode = currentNode.nextElement;
+
+      currentNode.nextElement = previousNode;
+
+      previousNode = currentNode;
+      currentNode = nextNode;
+    }
+
+    this.head = previousNode;
+
+    return this.head;
+  }
 }
