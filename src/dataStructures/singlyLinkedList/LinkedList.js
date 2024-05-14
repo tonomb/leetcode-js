@@ -127,4 +127,19 @@ export class LinkedList {
 
     return this;
   }
+
+  length() {
+    let length = 0;
+    if (this.isEmpty()) {
+      return length;
+    }
+
+    let currentNode = this.head;
+    while (currentNode !== null) {
+      length += 1;
+      currentNode = currentNode.nextElement;
+    }
+
+    return length;
+  }
 }

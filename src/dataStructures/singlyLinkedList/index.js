@@ -17,3 +17,4 @@ list.printList();
 // list.deleteAtHead();
 list.deleteAtTail();
 list.printList();
+console.log(list.length());
