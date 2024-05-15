@@ -16,21 +16,14 @@ function sortColors(colors) {
 
   for (let i = 0; i < colors.length; i++) {
     if (colors[current] === 0) {
-      const tempStart = colors[start];
-      const tempCurrent = colors[current];
-      colors[start] = tempCurrent;
-      colors[current] = tempStart;
+      [colors[start], colors[current]] = [colors[current], colors[start]];
 
       start++;
       current++;
     } else if (colors[current] === 1) {
       current++;
     } else if (colors[current] === 2) {
-      const tempEnd = colors[end];
-      const tempCurrent = colors[current];
-
-      colors[end] = tempCurrent;
-      colors[current] = tempEnd;
+      [colors[end], colors[current]] = [colors[current], colors[end]];
       end--;
     }
   }
