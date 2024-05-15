@@ -17,7 +17,6 @@ function sortColors(colors) {
   for (let i = 0; i < colors.length; i++) {
     if (colors[current] === 0) {
       [colors[start], colors[current]] = [colors[current], colors[start]];
-
       start++;
       current++;
     } else if (colors[current] === 1) {
