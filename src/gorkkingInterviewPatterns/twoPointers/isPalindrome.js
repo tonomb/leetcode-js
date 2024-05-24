@@ -26,8 +26,6 @@ export function isPalindrome(s) {
     }
   }
 
-  console.log(count);
-
   if (count <= 1) {
     return true;
   } else {
