@@ -39,3 +39,5 @@ function removeDuplicates(head) {
   // return list
   return head;
 }
+
+// O(n) where n is the number of elements in the list
