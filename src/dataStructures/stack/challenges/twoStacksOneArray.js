@@ -14,6 +14,59 @@
 
 class twoStacks {
   constructor(s) {
+    this.size = s;
+    this.stack = new Array(s).fill(null);
+    this.top1 = -1;
+    this.top2 = s;
+  }
+  //insert at top of first stack
+  push1(value) {
+    if (this.top1 < this.top2 - 1) {
+      this.top1 += 1;
+      this.stack[this.top1] = value;
+    } else {
+      console.log("Stack Overflow");
+      process.exit(1);
+    }
+  }
+
+  //insert at top of second stack
+  push2(value) {
+    if (this.top1 < this.top2 - 1) {
+      this.top2 -= 1;
+      this.stack[this.top2] = value;
+    } else {
+      console.log("Stack Overflow");
+      process.exit(1);
+    }
+  }
+
+  //remove and return value from top of first stack
+  pop1() {
+    if (this.top1 != null) {
+      let value = this.stack[this.top1];
+      this.top1 -= 1;
+      return value;
+    } else {
+      console.log("Stack Overflow");
+      process.exit(1);
+    }
+  }
+
+  //remove and return value from top of second stack
+  pop2() {
+    if (this.top2 != null) {
+      let value = this.stack[this.top2];
+      this.top2 += 1;
+      return value;
+    } else {
+      console.log("Stack Overflow");
+      process.exit(1);
+    }
+  }
+}
+class twoStacksOriginal {
+  constructor(s) {
     this.stack = new Array(s).fill(null);
     this.size;
   }
@@ -83,15 +136,3 @@ class twoStacks {
 }
 
 export { twoStacks };
-
-const testStack = new twoStacks(5);
-
-console.log(testStack.stack);
-
-testStack.push1(1);
-console.log(testStack.stack);
-testStack.push1(2);
-console.log(testStack.stack);
-testStack.push1(3);
-
-console.log(testStack.stack);
