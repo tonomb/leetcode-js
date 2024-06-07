@@ -1,3 +1,3 @@
 # leetcode-js
 
-This Repo is full of Solutions to Leet Code Problems and Data Structure Implementations
+This Repo is full of solutions to LeetCode problems and Data Structure Implementations
