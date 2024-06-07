@@ -77,3 +77,18 @@ The useual convention is to thunk of the rows as sources and the columns as dest
 An array of linked list is used to store all the edges in the graph. The size of the array is equal to the number of vertices.
 
 Each index in this array represents a specific vertex in the graph. The entry at index i of the array contains a linked list containing the vertices that are adjacent to vertex i.
+
+# Complexities of Graph Operations
+
+| _V_ is the total number of Vertices _E_ is total number of Edges
+
+| Operation     | Adjacency List | Adjacency Matrix |
+| ------------- | -------------- | ---------------- |
+| Add Vertex    | O(1)           | O(V^2)           |
+| Remove Vertex | O(V+E)         | O(V^2)           |
+| Add Edge      | O(1)           | O(1)             |
+| Remove Edge   | O(E)           | O(1)             |
+
+Both representations are suitable for different situations. If your model frequently manipulates vertices, the adjacency list is a better choice.
+
+If you are dealing primarily with edges, the adjacency matrix is the more efficient approach.
