@@ -31,3 +31,33 @@ This occurs when an edge starts and ends on the same vertex.
 ### Adjacency
 
 Two vertices are said to be adjacent if there is an edge connecting them directly
+
+# Types of Graphs
+
+## Unidirected Graph
+
+all edges are undirected. Edges do not have direction.
+
+The max posible vertices in a graph are caluclted via:
+
+```
+n(n-1) / 2
+```
+
+n = # vertices
+
+## Directed Graph
+
+Edges are unidrectional. You can only travers the graph in one direction.
+
+The max possible vertices are caluclated via:
+
+```
+n * n(-1)
+```
+
+The min number of verices
+
+```
+n-1
+```
