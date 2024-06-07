@@ -61,3 +61,19 @@ The min number of verices
 ```
 n-1
 ```
+
+# Representation of Graphs
+
+## Adjacency Matrix
+
+The **adjacency matrix** is a two-dimensional matrix where each cell can contain a 0 or a 1.​ The row and column headings represent the vertices.
+
+If a cell contains 1, there exists an edge between the corresponding vertices e.g.Matrix[0][1]=1 shows that an edge exists between vertex 0 and 1
+
+The useual convention is to thunk of the rows as sources and the columns as destinations
+
+## Adjacency List
+
+An array of linked list is used to store all the edges in the graph. The size of the array is equal to the number of vertices.
+
+Each index in this array represents a specific vertex in the graph. The entry at index i of the array contains a linked list containing the vertices that are adjacent to vertex i.
