@@ -92,3 +92,17 @@ Each index in this array represents a specific vertex in the graph. The entry at
 Both representations are suitable for different situations. If your model frequently manipulates vertices, the adjacency list is a better choice.
 
 If you are dealing primarily with edges, the adjacency matrix is the more efficient approach.
+
+# Graph Traversals
+
+There are two basic techniques used for graph traversal:
+
+1. Breadth-First Search ( BFS )
+1. Depth-Frist Search ( DFS )
+
+_Levels_
+
+Level 1 = Take a vertex as a starting point
+Level 2 = All vertices adjacent to the vertex
+Level 3 = All Vertices adjacent to those nodes
+Level 4 = ....
