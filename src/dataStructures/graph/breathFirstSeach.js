@@ -40,3 +40,7 @@ export function bfsTraversal(graph, source) {
 
   return result;
 }
+
+// Complexity Analysis
+// Time Complexity = 0(V + E) where V is the numer of vertices and E is the numver of edges
+// Space Complexity = 0(V) Queue will hold all the vertices in the graph. Vistited will also hold all vertices O(2V) = O(V)
