@@ -2,7 +2,7 @@ import { LinkedList } from "./utils/index.js";
 
 // The implementation will be based on the adjacency list model
 
-class Graph {
+export class Graph {
   constructor(vertices) {
     //Total number of vertices in the graph
     this.vertices = vertices;
@@ -24,7 +24,9 @@ class Graph {
       // if we were implementing a undirected graph where (1,0) == (0, 1)
       // we would createa n additional edge from detinaction to source as well
 
-      this.list[destination].insertAtHead(source);
+      // this.list[destination].insertAtHead(source);
+
+      return this;
     }
   }
 
@@ -44,6 +46,23 @@ class Graph {
 
       console.log("null");
     }
+  }
+
+  strGraph() {
+    let str = "";
+    let i;
+    for (i = 0; i < this.list.length; i++) {
+      str = str + "|" + String(i) + "| =>";
+      let temp = this.list[i].getHead();
+      while (temp != null) {
+        str += "[" + String(temp.data) + "] ->";
+        temp = temp.next;
+      }
+
+      str += "null";
+    }
+
+    return str;
   }
 }
 
