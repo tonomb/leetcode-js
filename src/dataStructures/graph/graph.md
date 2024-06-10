@@ -106,3 +106,15 @@ Level 1 = Take a vertex as a starting point
 Level 2 = All vertices adjacent to the vertex
 Level 3 = All Vertices adjacent to those nodes
 Level 4 = ....
+
+### Breath-First Search
+
+The BFS algorithm earns its name becasue it grow breadth-wise. All nodes at a certain level are traversed before moving on to the next elvel.
+
+The level-wise expansion ensures that for any starting vertex, you can reach all others, one level at a time.
+
+### Depth-First Traversal
+
+The DFS algorithm is the opposite of BFS in the sense that it grows depth-wise
+
+Starting from any node, we keep mobing to an adjacent node until we reach the farthest level. Then we move back to the starting point and pick another adjacent node. Once again, we probe the farthest level and move back. This process continues untill all nodes are visited.
