@@ -40,3 +40,18 @@ export function checkPermutations(string1, string2) {
 
 // Time Complexity O(n) - iterates strings once
 // Space COmplexity O(n) - worst case insets all characters into map
+
+function checkPermutationsAlt(string1, string2) {
+  if (string1.length != string2.length) {
+    return false;
+  }
+
+  const sortString1 = string1.split("").sort().join(); // sorting is n log n
+
+  const sortString2 = string2.split("").sort().join();
+
+  return sortString1 === sortString2;
+}
+
+// Time Complexity O(n log n) for the js sorting functions
+// space complexity O(n) because of space needed for arrays
