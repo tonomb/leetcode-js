@@ -52,6 +52,33 @@ export class Trie {
     console.log("'" + key + "' inserted");
   }
 
+  insertRecursive(key) {
+    if (key == null) {
+      return;
+    }
+
+    key = key.toLowerCase();
+
+    const insertR = (currentNode, key, level) => {
+      // Base Case, we've reached the end of the key
+      if (level === key.length) {
+        currentNode.markAsLeaf();
+        return;
+      }
+
+      let index = this.getIndex(key[level]);
+
+      if (currentNode.children[index] === null) {
+        currentNode.children[index] = new TriNode(key[level]);
+      }
+      // move to the next level
+      insertR(currentNode.children[index], key, level + 1);
+    };
+
+    // Start recursive call
+    insertR(this.root, key, 0);
+  }
+
   search(key) {
     return false;
   }
