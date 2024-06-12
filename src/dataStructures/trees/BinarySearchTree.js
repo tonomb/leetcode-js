@@ -8,7 +8,7 @@ export class BinarySearchTree {
   insert(newValue) {
     if (this.root == null) {
       this.root = new Node(newValue);
-      return this;
+      return;
     }
 
     //start from the root
@@ -23,16 +23,16 @@ export class BinarySearchTree {
         currentNode = currentNode.leftChild;
       } else {
         // iterate to the right subtree
-        currentNode = currentNode.righChild;
+        currentNode = currentNode.rightChild;
       }
     }
 
     // parent  = parent of the null
     // inserte node here
-    if (newValue < parent) {
+    if (newValue < parent.val) {
       parent.leftChild = new Node(newValue);
     } else {
-      parent.righChild = new Node(newValue);
+      parent.rightChild = new Node(newValue);
     }
   }
 
@@ -47,8 +47,8 @@ export class BinarySearchTree {
         newValue
       );
     } else {
-      currentNode.righChild = this.insertRecursive(
-        currentNode.righChild,
+      currentNode.rightChild = this.insertRecursive(
+        currentNode.rightChild,
         newValue
       );
     }
@@ -80,20 +80,89 @@ export class BinarySearchTree {
 
       console.log(currentNode.val);
 
-      this.inOrderPrint(currentNode.righChild);
+      this.inOrderPrint(currentNode.rightChild);
     }
   }
 
   postOrderPrint(currentNode) {
     if (currentNode != null) {
       this.postOrderPrint(currentNode.leftChild);
-      this.postOrderPrint(currentNode.righChild);
+      this.postOrderPrint(currentNode.rightChild);
 
       console.log(currentNode.val);
     }
   }
+
+  search(value) {
+    //start at root
+    if (this.root == null) {
+      console.log("Tree is empty ");
+      return;
+    }
+
+    // if seearch tree we now what side of the tree to check, dont neet to search the whole tree
+    let currentNode = this.root;
+
+    while (currentNode) {
+      if (value === currentNode.val) {
+        console.log("found value", currentNode.val);
+        return currentNode;
+      } else if (value < currentNode.val) {
+        // search left
+        currentNode = currentNode.leftChild;
+      } else {
+        // search right
+        currentNode = currentNode.rightChild;
+      }
+    }
+
+    console.log("not found");
+
+    return;
+  }
+
+  rSearch(value) {
+    if (this.root == null) {
+      consolelog("Tree is empty");
+      return;
+    }
+
+    this.recursiveSearch(this.root, value);
+  }
+
+  recursiveSearch(currentNode, value) {
+    if (currentNode == null) {
+      console.log("value not found");
+    } else if (currentNode.val == value) {
+      console.log("Found", currentNode.val);
+      return currentNode.val;
+    } else if (value < currentNode.val) {
+      this.recursiveSearch(currentNode.leftChild, value);
+    } else {
+      this.recursiveSearch(currentNode.rightChild, value);
+    }
+  }
 }
 
-var BST = new BinarySearchTree(8);
+var BST = new BinarySearchTree(6);
 
-console.log(" The root value of the BST:", BST.root.val);
+BST.insert(4);
+BST.insert(9);
+BST.insert(5);
+BST.insert(2);
+BST.insert(8);
+BST.insert(12);
+BST.insert(10);
+BST.insert(14);
+
+console.log("Pre Order Print");
+BST.preOrderPrint(BST.root);
+// console.log("Post Order Print");
+// BST.postOrderPrint(BST.root);
+// console.log("IN Order Print");
+// BST.inOrderPrint(BST.root);
+
+BST.search(16);
+
+BST.rSearch(8);
+BST.rSearch(16);
