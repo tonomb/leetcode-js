@@ -142,6 +142,92 @@ export class BinarySearchTree {
       this.recursiveSearch(currentNode.rightChild, value);
     }
   }
+
+  delete(currentNode, value) {
+    // CASE 1: Delete from empty tree
+    if (currentNode == null) {
+      return false;
+    }
+
+    let parentNode;
+    // traverse the tree
+    while (currentNode && currentNode.val != value) {
+      parentNode = currentNode;
+
+      if (value < currentNode.val) {
+        currentNode.leftChild;
+      } else {
+        currentNode.rightChild;
+      }
+    }
+
+    // CASE 2: Current node = NULL, value not found
+    if (currentNode == null) {
+      console.log("Value to delete not found");
+      return false;
+    } else if (
+      currentNode.leftChild == null &&
+      currentNode.rightChild == null
+    ) {
+      // CASE 3: currentNode is a leaf node with right and left null
+      // check if node to be deleted is right or left of parent or if root
+
+      if (currentNode.val == this.root.val) {
+        this.root = null;
+        return true;
+      } else if (currentNode.val < parentNode.val) {
+        parentNode.leftChild = null;
+        return true;
+      } else {
+        parentNode.rightChild = null;
+        return true;
+      }
+    } else if (currentNode.rightChild == null) {
+      // CASE 4: node to delete has left child only
+      // link left child to the parent
+      if (currentNode.val == this.root.val) {
+        this.root = currentNode.leftChild;
+        return true;
+      } else if (currentNode.leftChild.val < parentNode.val) {
+        parentNode.leftChild = currentNode.leftChild;
+        return true;
+      } else {
+        parentNode.rightChild = currentNode.leftChild;
+        return true;
+      }
+    } else if (currentNode.leftChild == null) {
+      if ((currentNode.val = this.root.val)) {
+        this.root = currentNode.rightChild;
+        return true;
+      } else if (currentNode.rightChild.val < parentNode.val) {
+        parentNode.leftChild = currentNode.rightChild;
+        return true;
+      } else {
+        parentNode.rightChild = currentNode.rightChild;
+        return true;
+      }
+    } else {
+      // CASE 5: Delete node with 2 children
+
+      let minRight = currentNode.rightChild;
+
+      // traverse to find left mose node in the right subtree
+
+      while (minRight.leftChild !== null) {
+        minRight = minRight.leftChild;
+      }
+
+      let temp = minRight.val;
+
+      //delete the leftmost node in the right subree by calling in the same delete function to cater for whether it has children or not
+
+      this.delete(this.root, minRight.val);
+
+      currentNode.val = temp;
+
+      return true;
+    }
+  }
 }
 
 var BST = new BinarySearchTree(6);
