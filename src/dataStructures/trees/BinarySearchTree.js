@@ -63,6 +63,26 @@ export class BinarySearchTree {
 
     this.insertRecursive(this.root, newValue);
   }
+
+  preOrderPrint(currentNode) {
+    if (currentNode != null) {
+      console.log(currentNode.val);
+      // make recursive call to left
+      this.preOrderPrint(currentNode.leftChild);
+      // make recursive call to right
+      this.preOrderPrint(currentNode.rightChild);
+    }
+  }
+
+  inOrderPrint(currentNode) {
+    if (currentNode != null) {
+      this.inOrderPrint(currentNode.leftChild);
+
+      console.log(currentNode.val);
+
+      this.inOrderPrint(currentNode.righChild);
+    }
+  }
 }
 
 var BST = new BinarySearchTree(8);
