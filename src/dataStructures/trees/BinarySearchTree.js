@@ -83,6 +83,15 @@ export class BinarySearchTree {
       this.inOrderPrint(currentNode.righChild);
     }
   }
+
+  postOrderPrint(currentNode) {
+    if (currentNode != null) {
+      this.postOrderPrint(currentNode.leftChild);
+      this.postOrderPrint(currentNode.righChild);
+
+      console.log(currentNode.val);
+    }
+  }
 }
 
 var BST = new BinarySearchTree(8);
