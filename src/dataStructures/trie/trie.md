@@ -22,4 +22,5 @@ The Trie node repressents one alphabet, which keeps pointers to its children nod
 
 ## Time Complexity
 
-For a Key with **N** characters, the worst-case time complexity is O(n) since we need to make **n** iterations
+- **Insertion** For a Key with **N** characters, the worst-case time complexity is O(n) since we need to make **n** iterations
+- **Search** If the length of the word is H, the worstcase tie compexity O(h)

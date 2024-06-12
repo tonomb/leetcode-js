@@ -80,6 +80,28 @@ export class Trie {
   }
 
   search(key) {
+    if (key === null) {
+      return false;
+    }
+
+    key = key.toLowerCase();
+    let currentNode = this.root;
+    let index = 0;
+
+    for (let level = 0; level < key.length; level++) {
+      index = this.getIndex(key[level]);
+
+      if (currentNode.children[index] === null) {
+        return false;
+      }
+
+      currentNode = currentNode.children[index];
+    }
+
+    if (currentNode != null && currentNode.isEndWord()) {
+      return true;
+    }
+
     return false;
   }
 
