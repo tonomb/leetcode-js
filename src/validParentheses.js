@@ -6,32 +6,32 @@
 // Open brackets must be closed in the correct order.
 // Every close bracket has a corresponding open bracket of the same type.
 
-export function checkValidParentheses(s){
-    // Stacks
-    const stack = []
-    const keys = new Map()
-    keys.set(')','(')
-    keys.set('}','{')
-    keys.set(']','[')
+export function checkValidParentheses(s) {
+  // Stacks
+  const stack = [];
+  const keys = new Map();
+  keys.set(")", "(");
+  keys.set("}", "{");
+  keys.set("]", "[");
 
-    const brackets = s.split('')
+  const brackets = s.split("");
 
-    for( let i = 0; i < brackets.length ; i++ ){
-    
-        if(brackets[i] == '(' || brackets[i] == '{' || brackets[i] =='['){
-            stack.push(brackets[i])
-        } else if( stack[stack.length -1] === keys.get(brackets[i])){
-            // check if corresponding bracket 
-            stack.pop()
-        } else {
-            stack.push(brackets[i])
-        }
-
-    }
-    if(stack.length === 0){
-        return true
+  for (let i = 0; i < brackets.length; i++) {
+    if (brackets[i] == "(" || brackets[i] == "{" || brackets[i] == "[") {
+      stack.push(brackets[i]);
+    } else if (stack[stack.length - 1] === keys.get(brackets[i])) {
+      // check if corresponding bracket
+      stack.pop();
     } else {
-        return false 
+      stack.push(brackets[i]);
     }
-   
+  }
+  if (stack.length === 0) {
+    return true;
+  } else {
+    return false;
+  }
 }
+
+// Time Complexity O(n) going through array of characters once
+// Space Complexity O(n) worst case all characters are pushed into the stack.
