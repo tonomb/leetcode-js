@@ -34,4 +34,23 @@ The index of each node is how much you'd count if you started from 0 at the root
                               /    \     /
                             20     10   40
 
-                 [100,60,80,30,50,70,75,20,10,40]
+
+                         [100,60,80,30,50,70,75,20,10,40]
+
+As you can see, all the parent noes are present in the firt half og the array, and the last parent appears at the florr(n/2th) position. In this cas, 'n' is the last or larges index so
+
+n=9
+
+floor( (9-1) /2 ) = 4
+
+So, the last parent is at the 4th index, whis key is = 50. The children nodes appear in the second half. The followinf two properties hold:
+
+LeftChild = 2k +1
+
+Right Child = 2k + 2
+
+# Max Heap
+
+Max Heap follows the max heap property meaning the key at the parent node is always greater than the keys at child nodes. Heaps can be implmented using arrays.
+
+Initially, elements are placed in nodes in the same order as they appear in the array. Then a function is called over the whole heap in a bottom-up manner that "Max Heapifies" or "Percolates up" on this heap so that the hap property is restored. The "Max heapify" function is bottom-up because it starts comparing and swapping parent-child key values from the last parent (at the n/2 and index)
