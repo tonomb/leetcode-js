@@ -51,6 +51,10 @@ Right Child = 2k + 2
 
 # Max Heap
 
-Max Heap follows the max heap property meaning the key at the parent node is always greater than the keys at child nodes. Heaps can be implmented using arrays.
+Max Heap follows the max heap property meaning the key at the **parent node is always greater than the keys at child nodes**. Heaps can be implmented using arrays.
 
 Initially, elements are placed in nodes in the same order as they appear in the array. Then a function is called over the whole heap in a bottom-up manner that "Max Heapifies" or "Percolates up" on this heap so that the hap property is restored. The "Max heapify" function is bottom-up because it starts comparing and swapping parent-child key values from the last parent (at the n/2 and index)
+
+# Min Heap
+
+Min Heap follows the min heap property meaning the key at the **parent node is always smaller than the keys at child nodes**
