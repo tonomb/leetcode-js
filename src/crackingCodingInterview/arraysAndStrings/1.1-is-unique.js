@@ -5,7 +5,7 @@ function isUniqueChars(str) {
 
   const char_set = Array(128).fill(false);
   for (let i = 0; i < str.length; i++) {
-    const val = str.charAt(i);
+    const val = str.charCodeAt(i);
     if (char_set[val]) {
       return false;
     }
