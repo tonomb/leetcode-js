@@ -19,7 +19,7 @@ function isPermutationOfPalindrome(phrase) {
 function buildCharFrequencyTable(phrase) {
   const table = new Array(26).fill(0);
   // table [2, 2]
-  for (let char of phrase.split("")) {
+  for (let char of phrase) {
     const value = getCharNumber(char);
     if (value != -1) {
       table[value]++;
@@ -72,7 +72,7 @@ function isPermutationOfPalindromeOptimized(phrase) {
   let countOdd = 0;
   const table = new Array(26).fill(0);
 
-  for (let char of phrase.split("")) {
+  for (let char of phrase) {
     let index = getCharNumber(char);
     if (index != -1) {
       table[index]++;
@@ -109,3 +109,27 @@ function isPermutationOfPalindromeSet(phrase) {
 
   return oddChars.size <= 1;
 }
+
+console.log(isPermutationOfPalindromeSet("abab"));
+console.log(isPermutationOfPalindromeSet("Tact Coa"));
+console.log(isPermutationOfPalindromeSet("Hello"));
+
+function isPermutationOfPalindromeBitVector(phrase) {
+  let bitVector = 0;
+
+  for (let char of phrase) {
+    let index = getCharNumber(char);
+    if (index != -1) {
+      bitVector ^= 1 << index; // Togles the bit at index using XOR
+    }
+  }
+  it;
+  return bitVector === 0 || (bitVector & (bitVector - 1)) === 0;
+
+  //bitVector === 0 → All characters appear an even number of times (perfect palindrome).
+  //bitVector & (bitVector - 1) === 0 → At most one bit is set (valid permutation of a palindrome).
+}
+
+console.log(isPermutationOfPalindromeBitVector("abab"));
+console.log(isPermutationOfPalindromeBitVector("Tact Coa"));
+console.log(isPermutationOfPalindromeBitVector("Hello"));
