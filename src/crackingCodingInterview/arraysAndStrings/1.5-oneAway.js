@@ -60,3 +60,41 @@ console.log(oneEditAway("pale", "bae"));
 
 // Time Complexity O(n) because n is the length of the shorter string, we have to iterate over it
 // Space Complexity O(1) no extra space is used
+
+// Refactor
+function oneEditAwayOptimized(first, second) {
+  // check the length
+  if (Math.abs(first.length - second.length) > 1) {
+    return false;
+  }
+
+  // Deterine the shorter and longer strings
+  const s1 = first.length < second.length ? first : second; //bae
+  const s2 = first.length < second.length ? second : first; //pale
+
+  let index1 = 0;
+  let index2 = 0;
+
+  let foundDifference = false;
+  while (index1 < s1.length && index2 < s2.length) {
+    if (s1.charAt(index1) != s2.charAt(index2)) {
+      if (foundDifference) {
+        return false;
+      }
+      foundDifference = true;
+
+      if (s1.length == s2.length) {
+        index1++;
+      }
+    } else {
+      index1++;
+    }
+    index2++;
+  }
+  return true;
+}
+
+console.log(oneEditAwayOptimized("pale", "ple"));
+console.log(oneEditAwayOptimized("pales", "pale"));
+console.log(oneEditAwayOptimized("pale", "bale"));
+console.log(oneEditAwayOptimized("pale", "bae"));
