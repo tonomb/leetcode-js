@@ -69,3 +69,6 @@ const testInput = [
 console.log(mergeRanges(testInput));
 
 const output = [{ startTime: 0, endTime: 5 }];
+
+// Time Complexity O( n log n) becuase we sorted the array
+// Space Complexity O(n) length of the mergedArray, worst case none overlap.
