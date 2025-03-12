@@ -34,11 +34,11 @@ would be first-come, first-served.
 Note: Order numbers are arbitrary. They do not have to be in increasing order.
 */
 
-const takeOut = [17, 8, 24]; // [3, 5]
+const takeOut = [17, 8, 24, 17]; // [3, 5]
 
 const dineIn = [12, 19, 2]; // [ ]
 
-const servedOrders = [17, 8, 12, 19, 24, 2];
+const servedOrders = [17, 8, 12, 19, 24, 2, 17];
 //                                i
 
 function checkOrders(takeOut, dineIn, served) {
