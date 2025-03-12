@@ -42,26 +42,98 @@ const servedOrders = [17, 8, 12, 19, 24, 2];
 //                                i
 
 function checkOrders(takeOut, dineIn, served) {
-  let index = 0; // 4
-  while (index < servedOrders.length - 1) {
-    // 4 < 5
-    if (served[index] != dineIn[0] && served[index] != takeOut[0]) return false; // 5 != undefined || 5 != 3
+  let takeOutIndex = 0;
+  let dineInIndex = 0;
 
-    if (served[index] == takeOut[0]) {
-      // 6 = 3
-      index++;
-      takeOut.shift();
-    } else if (served[index] == dineIn[0]) {
-      // 6 = 6
-      index++;
-      dineIn.shift();
+  for (let i = 0; i < served.length; i++) {
+    let order = served[i];
+
+    if (takeOutIndex < takeOut.length && order == takeOut[takeOutIndex]) {
+      takeOutIndex++;
+    } else if (dineInIndex < dineIn.length && order == dineIn[dineInIndex]) {
+      dineInIndex++;
+    } else {
+      return false;
     }
   }
 
-  return true;
+  return takeOutIndex === takeOut.length && dineInIndex === dineIn.length;
 }
 
 console.log(checkOrders(takeOut, dineIn, servedOrders));
 
 // Time Complexity O(n) n is the length of servedOrders
 // Space Complexity O(1) inline
+
+function isFirstComeFirstServeRecursive(
+  takeOutOrders,
+  dineInOrders,
+  servedOrders,
+) {
+  // base case
+  if (servedOrders.length === 0) {
+    return true;
+  }
+
+  if (takeOutOrders.length && takeOutOrders[0] === servedOrders[0]) {
+    return isFirstComeFirstServe(
+      takeOutOrders.slice(1),
+      dineInOrders,
+      servedOrders.slice(1),
+    );
+  } else if (dineInOrders.length && dineInOrders[0] === servedOrders[0]) {
+    return isFirstComeFirstServe(
+      takeOutOrders,
+      dineInOrders.slice(1), // This is O(n) because we are creating a new array. Shallow copy
+      servedOrders.slice(1),
+    );
+  } else {
+    return false;
+  }
+}
+
+// we can optimize this a bit further, although given the nature of the input this probably won't be very resource-intensive anyway...should we talk about optimizations
+// This takes O(n^2) time and O(n^2) space
+// We sine we are doing this recursive its "looping in the callstack" N^2  since on each "loop" we create a new array N^2 space
+
+function isFirstComeFirstServed(
+  takeOutOrders,
+  dineInOrders,
+  serverdOrders,
+  takeOutOrdersIndex,
+  dineInOrdersIndex,
+  servedOrdersIndex,
+) {
+  servedOrdersIndex = servedOrdersIndex ?? 0;
+  takeOutOrdersIndex = takeOutOrdersIndex ?? 0;
+  dineInOrdersIndex = dineInOrdersIndex ?? 0;
+
+  if (servedOrders === 0) {
+    return true;
+  }
+
+  if (
+    takeOutOrdersIndex < takeOutOrders.length &&
+    takeOutOrders[takeOutOrdersIndex] === servedOrders[servedOrdersIndex]
+  ) {
+    takeOutOrdersIndex++;
+  } else if (
+    dineInOrdersIndex < dineInOrders.length &&
+    dineInOrders[dineInOrdersIndex] === serverdOrders[servedOrdersIndex]
+  ) {
+    dineInOrdersIndex++;
+  } else {
+    return false;
+  }
+
+  isFirstComeFirstServed(
+    takeOutOrders,
+    dineInOrders,
+    serverdOrders,
+    takeOutOrdersIndex,
+    dineInOrdersIndex,
+    servedOrdersIndex,
+  );
+}
+
+// Time O(n) space O(n) because of recursion
