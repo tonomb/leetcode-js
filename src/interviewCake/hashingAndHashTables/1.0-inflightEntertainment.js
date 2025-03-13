@@ -54,7 +54,7 @@ function watchTwoMoviesOptimized(flightLength, movieLengths) {
 // Time O(n) n being the length of the availabeMovies
 // Space O(n) n being the length of the movies due to the set.
 
-// What if we wanted the movie lengths to sum to something close to the flight length (say, within 20 minutes)?
+// Bonus 1: What if we wanted the movie lengths to sum to something close to the flight length (say, within 20 minutes)?
 
 function watchTwoMoviesOptimized(flightLength, movieLengths, buffer) {
   const neededMovieLengths = new Set(); // { 1, 3 , 5 }
@@ -73,3 +73,36 @@ function watchTwoMoviesOptimized(flightLength, movieLengths, buffer) {
 
   return false;
 }
+// for this solution the time complexity if still O(n) because the inner loop is caped at a buffer. but  it also could be o(n^2) if the buffer is the same as the flight length
+
+// Bonus 2: What if we wanted to fill the flight length as nicely as possible with any number of movies (not just 2)?
+
+// Bonus 3: What if we knew that movieLengths was sorted? Could we save some space and/or time?
+
+const sortedMovieLengths = [2, 3, 5, 9];
+
+function watchTwoMoviesSorted(flightLength, movieLengths) {
+  let right = movieLengths.length - 1;
+  let left = 0;
+
+  while (left < right) {
+    let neededLength = flightLength - movieLengths[left]; // 10 - 3  = 7
+
+    if (movieLengths[right] == neededLength) {
+      // 7 = 7
+      return true;
+    }
+
+    if (movieLengths[right] < neededLength) {
+      // 7 < 9
+      left++;
+    } else {
+      right--;
+    }
+  }
+
+  return false;
+}
+
+// Time O(n)
+// space O(1)
