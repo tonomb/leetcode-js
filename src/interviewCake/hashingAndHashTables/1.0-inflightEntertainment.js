@@ -53,3 +53,23 @@ function watchTwoMoviesOptimized(flightLength, movieLengths) {
 
 // Time O(n) n being the length of the availabeMovies
 // Space O(n) n being the length of the movies due to the set.
+
+// What if we wanted the movie lengths to sum to something close to the flight length (say, within 20 minutes)?
+
+function watchTwoMoviesOptimized(flightLength, movieLengths, buffer) {
+  const neededMovieLengths = new Set(); // { 1, 3 , 5 }
+
+  for (let movieLength of movieLengths) {
+    let neededMovieLength = flightLength - movieLength; //10 - 7 = 3
+
+    for (let diff = 0; diff <= buffer; diff++) {
+      if (neededMovieLengths.has(neededMovieLength - buffer)) {
+        return true;
+      }
+    }
+
+    neededMovieLengths.add(movieLength);
+  }
+
+  return false;
+}
